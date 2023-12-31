@@ -10,10 +10,12 @@ spec:
       valueFiles:
       - values.yaml
     path: kube-prometheus-stack
-    repoURL: https://bitnami-labs.github.io/sealed-secrets
-    targetRevision: 1.16.1
-  helm:
-      releaseName: sealed-secrets
+    repoURL: git@github.com:dpentim78/argocd-project.git
+    targetRevision: HEAD
   destination:
     server: "https://kubernetes.default.svc"
-    namespace: kubeseal
+    namespace: monitoring
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
